@@ -17,21 +17,22 @@ import java.util.Optional;
 @RequestMapping("/calc")
 public class OperationController {
     @Autowired
-    private final CalculatorService calculatorService = CalculatorService.getInstance();
+    private CalculatorService calculatorService;
 
     @GetMapping
     public String calc(){
         return "calc";
     }
     @PostMapping
-    public String calc(Operation operation, Model model){
+    public String calc(Operation operation,
+                       Model model){
         Optional<CalculatorOperation> operation1 = OperationFactory.createOperation(operation);
         if (operation1.isPresent()){
             double result = calculatorService.calculate(operation1.get()).get().getResult();
             model.addAttribute("result", result);
             return "calc";
         } else {
-            model.addAttribute("error");
+            model.addAttribute("error", "something goes wrong");
             return "calc";
         }
     }
