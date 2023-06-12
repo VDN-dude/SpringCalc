@@ -2,11 +2,8 @@ package by.tms.factory;
 
 import by.tms.entity.Operation;
 import by.tms.service.*;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
-
-
 public abstract class OperationFactory {
 
     public static Optional<CalculatorOperation> createOperation(Operation operation) {

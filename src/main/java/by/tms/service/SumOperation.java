@@ -1,7 +1,6 @@
 package by.tms.service;
 
 import by.tms.entity.Operation;
-import by.tms.entity.OperationType;
 
 import java.time.LocalDateTime;
 public class SumOperation implements CalculatorOperation{
@@ -14,7 +13,6 @@ public class SumOperation implements CalculatorOperation{
     @Override
     public void process() {
         operation.setResult(operation.getNum1() + operation.getNum2());
-        operation.setType(OperationType.SUM);
         operation.setTime(LocalDateTime.now());
     }
 
